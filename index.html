@@ -1,14 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>8 Март — За Мама</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
 --rose:  #c8445a;
@@ -63,7 +62,6 @@ box-shadow:
 6px 12px 48px rgba(58,26,34,.14);
 animation: rise .9s cubic-bezier(.22,1,.36,1) both;
 }
-
 @keyframes rise {
 from { opacity:0; transform: translateY(40px) scale(.97); }
 to   { opacity:1; transform: none; }
@@ -101,7 +99,6 @@ margin-bottom: 20px;
 animation: sway 4s ease-in-out infinite alternate;
 transform-origin: center bottom;
 }
-
 @keyframes sway {
 from { transform: rotate(-2deg); }
 to   { transform: rotate(2deg); }
@@ -117,7 +114,6 @@ text-align: center;
 line-height: 1.2;
 margin-bottom: 6px;
 }
-
 .subtitle {
 text-align: center;
 font-size: 1rem;
@@ -156,7 +152,6 @@ font-size: 1.3rem;
 font-style: italic;
 color: var(--rose);
 }
-
 .signature small {
 display: block;
 font-family: 'Cormorant Garamond', serif;
@@ -175,135 +170,166 @@ background: linear-gradient(to right, var(--blush), var(--rose), var(--blush));
 border-radius: 2px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="layer layer-back" id="back"></div>
+<div class="layer layer-back"  id="back"></div>
 <div class="layer layer-front" id="front"></div>
 
 <div class="card">
+  <div class="date">
+    <div class="date-line"></div>
+    <span class="date-text">8 Март 2026</span>
+    <div class="date-line right"></div>
+  </div>
 
-<div class="date">
-<div class="date-line"></div>
-<span class="date-text">8 Март 2026</span>
-<div class="date-line right"></div>
-</div>
+  <div class="flowers">🌸🌷🌸</div>
 
-<div class="flowers">🌸🌷🌸</div>
+  <h1>Честит Празник,<br>Мамо!</h1>
+  <p class="subtitle">Международен ден на жената</p>
 
-<h1>Честит Празник,<br>Мамо!</h1>
-<p class="subtitle">Международен ден на жената</p>
+  <div class="divider"><hr><span>❀</span><hr></div>
 
-<div class="divider"><hr><span>❀</span><hr></div>
+  <p class="message">
+    За теб, която ни учи на <strong>любов</strong>,<br>
+    която ни крепи с <strong>търпение</strong> и <strong>мъдрост</strong>,<br>
+    чиято усмивка е нашето <strong>слънце</strong> —<br><br>
+    Днес е твоят ден. Ти заслужаваш<br>
+    всяко цвете, всяка усмивка,<br>
+    всяка капка радост в света.
+  </p>
 
-<p class="message">
-За теб, която ни учи на <strong>любов</strong>,<br>
-която ни крепи с <strong>търпение</strong> и <strong>мъдрост</strong>,<br>
-чиято усмивка е нашето <strong>слънце</strong> —<br><br>
-Днес е твоят ден. Ти заслужаваш<br>
-всяко цвете, всяка усмивка,<br>
-всяка капка радост в света.
-</p>
+  <div class="signature">
+    С безкрайна любов
+    <small>от нашите сърца ✦ за теб</small>
+  </div>
 
-<div class="signature">
-С безкрайна любов
-<small>от нашите сърца ✦ за теб</small>
-</div>
-
-<div class="bar"></div>
+  <div class="bar"></div>
 </div>
 
 <script>
+// ── SVG flower builders ───────────────────────────────────────────
 
 function makeDaisy(petalColor, centerColor) {
-let petals = '';
-for (let i = 0; i < 8; i++) {
-petals += `<ellipse cx="0" cy="-14" rx="5.5" ry="10" fill="${petalColor}" opacity="0.93" transform="rotate(${i*45})"/>`;
-}
-
-return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28 -28 56 56" width="56" height="56">
-${petals}
-<circle r="9" fill="${centerColor}"/>
-<circle r="5.5" fill="${centerColor}" opacity="0.55"/>
-<circle r="2.5" fill="white" opacity="0.4"/>
-</svg>`;
+  let petals = '';
+  for (let i = 0; i < 8; i++) {
+    petals += `<ellipse cx="0" cy="-14" rx="5.5" ry="10" fill="${petalColor}" opacity="0.93" transform="rotate(${i*45})"/>`;
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28 -28 56 56" width="56" height="56">
+    ${petals}
+    <circle r="9" fill="${centerColor}"/>
+    <circle r="5.5" fill="${centerColor}" opacity="0.55"/>
+    <circle r="2.5" fill="white" opacity="0.4"/>
+  </svg>`;
 }
 
 function makeRose(outer, inner) {
-let p1 = '', p2 = '';
-
-for (let i = 0; i < 5; i++) {
-p1 += `<ellipse cx="0" cy="-13" rx="8" ry="12" fill="${outer}" opacity="0.88" transform="rotate(${i*72})"/>`;
-}
-
-for (let i = 0; i < 5; i++) {
-p2 += `<ellipse cx="0" cy="-8" rx="5.5" ry="8" fill="${outer}" opacity="0.72" transform="rotate(${i*72+36})"/>`;
-}
-
-return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28 -28 56 56" width="56" height="56">
-${p1}${p2}
-<circle r="7" fill="${inner}"/>
-<circle r="3.5" fill="${inner}" opacity="0.5"/>
-</svg>`;
+  let p1 = '', p2 = '';
+  for (let i = 0; i < 5; i++) {
+    p1 += `<ellipse cx="0" cy="-13" rx="8" ry="12" fill="${outer}" opacity="0.88" transform="rotate(${i*72})"/>`;
+  }
+  for (let i = 0; i < 5; i++) {
+    p2 += `<ellipse cx="0" cy="-8"  rx="5.5" ry="8" fill="${outer}" opacity="0.72" transform="rotate(${i*72+36})"/>`;
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28 -28 56 56" width="56" height="56">
+    ${p1}${p2}
+    <circle r="7" fill="${inner}"/>
+    <circle r="3.5" fill="${inner}" opacity="0.5"/>
+  </svg>`;
 }
 
 function makeTulip(petalColor, stemColor) {
-return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22 -40 44 80" width="44" height="80">
-<line x1="0" y1="6" x2="0" y2="38" stroke="${stemColor}" stroke-width="2.8" stroke-linecap="round"/>
-<ellipse cx="-8" cy="22" rx="8" ry="4" fill="${stemColor}" opacity="0.75" transform="rotate(-28,-8,22)"/>
-<ellipse cx="-9" cy="-12" rx="9" ry="18" fill="${petalColor}" opacity="0.88"/>
-<ellipse cx="9" cy="-12" rx="9" ry="18" fill="${petalColor}" opacity="0.88"/>
-<ellipse cx="0" cy="-17" rx="8" ry="20" fill="${petalColor}"/>
-</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22 -40 44 80" width="44" height="80">
+    <line x1="0" y1="6" x2="0" y2="38" stroke="${stemColor}" stroke-width="2.8" stroke-linecap="round"/>
+    <ellipse cx="-8" cy="22" rx="8" ry="4" fill="${stemColor}" opacity="0.75" transform="rotate(-28,-8,22)"/>
+    <ellipse cx="-9" cy="-12" rx="9" ry="18" fill="${petalColor}" opacity="0.88"/>
+    <ellipse cx="9"  cy="-12" rx="9" ry="18" fill="${petalColor}" opacity="0.88"/>
+    <ellipse cx="0"  cy="-17" rx="8" ry="20" fill="${petalColor}"/>
+    <ellipse cx="-2" cy="-20" rx="3" ry="6"  fill="white" opacity="0.22"/>
+  </svg>`;
 }
 
+function makeCherryBlossom(color) {
+  let petals = '';
+  for (let i = 0; i < 5; i++) {
+    petals += `<ellipse cx="0" cy="-12" rx="6" ry="10" fill="${color}" opacity="0.85" transform="rotate(${i*72})"/>`;
+  }
+  let stamens = '';
+  for (let i = 0; i < 8; i++) {
+    const a = (i/8)*Math.PI*2;
+    const x = Math.cos(a)*7, y = Math.sin(a)*7;
+    stamens += `<line x1="0" y1="0" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#f9e0a0" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.2" fill="#f9c040"/>`;
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28 -28 56 56" width="56" height="56">
+    ${petals}
+    <circle r="8" fill="white" opacity="0.7"/>
+    ${stamens}
+    <circle r="3" fill="#f5d060"/>
+  </svg>`;
+}
+
+// ── Palette combos ────────────────────────────────────────────────
 const flowerDefs = [
-() => makeDaisy('#f9c0cb','#f9e060'),
-() => makeDaisy('#fad0e8','#ffdb80'),
-() => makeDaisy('#ffffff','#f9c840'),
-() => makeRose('#c8445a','#7a1828'),
-() => makeRose('#f07090','#c03050'),
-() => makeTulip('#e8507a','#3a9a55'),
-() => makeTulip('#f090b8','#4ab865')
+  () => makeDaisy('#f9c0cb', '#f9e060'),
+  () => makeDaisy('#fad0e8', '#ffdb80'),
+  () => makeDaisy('#e870a0', '#fff480'),
+  () => makeDaisy('#ffffff', '#f9c840'),
+  () => makeRose('#c8445a', '#7a1828'),
+  () => makeRose('#f07090', '#c03050'),
+  () => makeRose('#f9b0c8', '#d06080'),
+  () => makeRose('#e040a0', '#901060'),
+  () => makeTulip('#e8507a', '#3a9a55'),
+  () => makeTulip('#f090b8', '#4ab865'),
+  () => makeTulip('#b04090', '#3a9a55'),
+  () => makeTulip('#ff8060', '#4ab865'),
+  () => makeCherryBlossom('#f9c0d8'),
+  () => makeCherryBlossom('#ffb0cc'),
+  () => makeCherryBlossom('#f090b0'),
 ];
 
+const puppyEmojis = ['🐶','🐕','🦮','🐩','🐾'];
+
 function svgToDataURL(svgStr) {
-return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgStr)));
+  return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgStr)));
 }
 
-function spawnInto(containerId, count) {
-const container = document.getElementById(containerId);
+function spawnInto(containerId, count, puppyChance) {
+  const container = document.getElementById(containerId);
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'falling';
 
-for (let i = 0; i < count; i++) {
+    const isPuppy = Math.random() < puppyChance;
 
-const el = document.createElement('div');
-el.className = 'falling';
+    if (isPuppy) {
+      const size = 30 + Math.random() * 28;
+      el.style.fontSize = size + 'px';
+      el.style.lineHeight = '1';
+      el.textContent = puppyEmojis[Math.floor(Math.random() * puppyEmojis.length)];
+    } else {
+      const def = flowerDefs[Math.floor(Math.random() * flowerDefs.length)];
+      const svgStr = def();
+      const img = document.createElement('img');
+      const size = 48 + Math.random() * 28;
+      img.src = svgToDataURL(svgStr);
+      img.width  = size;
+      img.height = size;
+      img.style.display = 'block';
+      el.appendChild(img);
+    }
 
-const def = flowerDefs[Math.floor(Math.random()*flowerDefs.length)];
-const svgStr = def();
+    el.style.left              = (Math.random() * 100) + '%';
+    el.style.animationDuration = (6 + Math.random() * 9) + 's';
+    el.style.animationDelay    = (Math.random() * 14) + 's';
 
-const img = document.createElement('img');
-
-const size = 48 + Math.random()*28;
-
-img.src = svgToDataURL(svgStr);
-img.width = size;
-img.height = size;
-
-el.appendChild(img);
-
-el.style.left = (Math.random()*100)+'%';
-el.style.animationDuration = (6 + Math.random()*9)+'s';
-el.style.animationDelay = (Math.random()*14)+'s';
-
-container.appendChild(el);
+    container.appendChild(el);
+  }
 }
-}
 
-spawnInto('back',30);
-spawnInto('front',18);
-
+spawnInto('back',  32, 0.22);
+spawnInto('front', 20, 0.28);
 </script>
 
 </body>
